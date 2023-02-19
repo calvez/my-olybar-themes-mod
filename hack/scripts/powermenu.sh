@@ -60,6 +60,9 @@ case $chosen in
     $lock)
 		if [[ -f /usr/bin/i3lock ]]; then
 			i3lock
+		elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
+				xfce4-session-logout --logout
+			fi
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
 		fi
@@ -85,6 +88,8 @@ case $chosen in
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
+				xfce4-session-logout --logout
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
